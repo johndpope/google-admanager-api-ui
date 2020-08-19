@@ -1,12 +1,13 @@
 <?php
 
-
 namespace App\Http\Controllers\Auth\OAuth;
 
 use App\Http\Controllers\Controller;
+use App\User;
+use Illuminate\Support\Facades\Auth;
 use Laravel\Socialite\Facades\Socialite;
 
-class GithubLoginController extends Controller
+class GitHubLoginController extends Controller
 {
     /**
      * Redirect the user to the GitHub authentication page.
@@ -25,8 +26,10 @@ class GithubLoginController extends Controller
      */
     public function handleProviderCallback()
     {
-        $user = Socialite::driver('github')->user();
-
-        // $user->token;
+        $githubUser = Socialite::driver('github')->user();
+        $user = User::where('email', $githubUser->getEmail())->first();
+        // @todo handle users that aren't in our database (yet).
+        Auth::login($user, true);
+        return redirect()->route('home');
     }
 }
