@@ -12,4 +12,4 @@ example to build a web interface that leverages the Google Ad Manager API.
 
 ## License
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+This sample project is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
