@@ -22,5 +22,8 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::get('login/github', 'Auth\OAuth\GitHubLoginController@redirectToProvider');
+Route::get('login/github', 'Auth\OAuth\GitHubLoginController@redirectToProvider')->name('login.github');
 Route::get('login/github/callback', 'Auth\OAuth\GitHubLoginController@handleProviderCallback');
+
+Route::get('login/google', 'Auth\OAuth\GoogleLoginController@redirectToProvider')->name('login.google');
+Route::get('login/google/callback', 'Auth\OAuth\GoogleLoginController@handleProviderCallback');

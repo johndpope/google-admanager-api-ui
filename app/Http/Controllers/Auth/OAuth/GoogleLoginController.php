@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Auth;
 use Laravel\Socialite\Facades\Socialite;
 use Laravel\Socialite\Two\InvalidStateException;
 
-class GitHubLoginController extends Controller
+class GoogleLoginController extends Controller
 {
     /**
      * Redirect the user to the GitHub authentication page.
@@ -17,7 +17,7 @@ class GitHubLoginController extends Controller
      */
     public function redirectToProvider()
     {
-        return Socialite::driver('github')->redirect();
+        return Socialite::driver('google')->redirect();
     }
 
     /**
@@ -28,7 +28,7 @@ class GitHubLoginController extends Controller
     public function handleProviderCallback()
     {
         try {
-            $externalUser = Socialite::driver('github')->stateless()->user();
+            $externalUser = Socialite::driver('google')->stateless()->user();
             $user = User::where('email', $externalUser->getEmail())->first();
         } catch (InvalidStateException $e) {
             $message = 'Something went wrong with the authentication, sorry please try again?';

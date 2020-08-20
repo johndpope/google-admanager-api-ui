@@ -65,6 +65,8 @@
                             </div>
                         </div>
                     </form>
+                    <a href="{{ route('login.github') }}">Github login</a>
+                    <a href="{{ route('login.google') }}">Google login</a>
                 </div>
             </div>
         </div>
